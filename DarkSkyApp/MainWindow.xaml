@@ -1,0 +1,59 @@
+﻿<Window x:Name="windowMain" x:Class="DarkSkyApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DarkSkyApp"
+        mc:Ignorable="d"
+        Title="Dark Sky App" Height="450" Width="800" Loaded="WindowMain_Loaded">
+    <Grid>
+        <Label Name="labelLatitude" Content="Latitude" HorizontalAlignment="Left" Margin="20,41,0,0" VerticalAlignment="Top"/>
+        <Label Name="lableLongitude" Content="Longitude" HorizontalAlignment="Left" Margin="20,81,0,0" VerticalAlignment="Top"/>
+        <Button Name="buttonProcurar" Content="Procurar" HorizontalAlignment="Left" Margin="150,169,0,0" VerticalAlignment="Top" Width="75" Click="ButtonProcurar_Click"/>
+        <TextBox Name="textBoxLatitude" HorizontalAlignment="Left" Height="23" Margin="106,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="textBoxLongitude" HorizontalAlignment="Left" Height="23" Margin="106,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="textBoxTimezone" HorizontalAlignment="Left" Height="23" Margin="106,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TabControl HorizontalAlignment="Left" Height="385" Margin="256,10,0,0" VerticalAlignment="Top" Width="511">
+            <TabItem Header="Currently">
+                <Grid Background="#FFE5E5E5">
+                    <Label Content="Time" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Icon" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Precip. Intensity" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Precip. Probability" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Temeprature" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Dew Point" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Pressure" HorizontalAlignment="Left" Margin="10,250,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Wind Gust" HorizontalAlignment="Left" Margin="10,290,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="textBoxTime" HorizontalAlignment="Left" Height="23" Margin="115,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxIcon" HorizontalAlignment="Left" Height="23" Margin="115,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxPrecipIntensity" HorizontalAlignment="Left" Height="23" Margin="115,90,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxPrecipProbability" HorizontalAlignment="Left" Height="23" Margin="115,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxTemperature" HorizontalAlignment="Left" Height="23" Margin="115,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxDewPoint" HorizontalAlignment="Left" Height="23" Margin="115,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxPressure" HorizontalAlignment="Left" Height="23" Margin="115,250,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxWindGust" HorizontalAlignment="Left" Height="23" Margin="115,290,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+                    <Label Content="Summary" HorizontalAlignment="Left" Margin="234,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Nearest Storm" HorizontalAlignment="Left" Margin="234,50,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Precip. Intensity Error" HorizontalAlignment="Left" Margin="234,90,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Precop. Type" HorizontalAlignment="Left" Margin="234,130,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Apparent Temp." HorizontalAlignment="Left" Margin="234,170,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Humidity" HorizontalAlignment="Left" Margin="234,210,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Wind Speed" HorizontalAlignment="Left" Margin="234,250,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Wind Bearing" HorizontalAlignment="Left" Margin="234,290,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="textBoxSummary" HorizontalAlignment="Left" Height="23" Margin="362,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxNearestStormDistance" HorizontalAlignment="Left" Height="23" Margin="362,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxPrecipIntensityError" HorizontalAlignment="Left" Height="23" Margin="362,90,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxPrecipType" HorizontalAlignment="Left" Height="23" Margin="362,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxApparentTemperature" HorizontalAlignment="Left" Height="23" Margin="362,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxHumidity" HorizontalAlignment="Left" Height="23" Margin="362,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxWindSpeed" HorizontalAlignment="Left" Height="23" Margin="362,250,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxWindBearing" HorizontalAlignment="Left" Height="23" Margin="362,290,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Daily">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
