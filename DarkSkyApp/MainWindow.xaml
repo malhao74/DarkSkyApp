@@ -20,7 +20,7 @@
                     <Label Content="Icon" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
                     <Label Content="Precip. Intensity" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top"/>
                     <Label Content="Precip. Probability" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Temeprature" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Temperature" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top"/>
                     <Label Content="Dew Point" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top"/>
                     <Label Content="Pressure" HorizontalAlignment="Left" Margin="10,250,0,0" VerticalAlignment="Top"/>
                     <Label Content="Wind Gust" HorizontalAlignment="Left" Margin="10,290,0,0" VerticalAlignment="Top"/>
@@ -57,7 +57,7 @@
                     <Label Content="Icon" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
                     <Label Content="Precip. Intensity" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top"/>
                     <Label Content="Precip. Probability" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Temeprature High" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Temperature High" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top"/>
                     <Label Content="Dew Point" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top"/>
                     <Label Content="Pressure" HorizontalAlignment="Left" Margin="10,250,0,0" VerticalAlignment="Top"/>
                     <Label Content="Wind Gust" HorizontalAlignment="Left" Margin="10,290,0,0" VerticalAlignment="Top"/>
