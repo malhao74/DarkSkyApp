@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
+using System.Configuration;
 
 namespace DarkSkyApp
 {
@@ -12,7 +13,6 @@ namespace DarkSkyApp
     class DataLayer
     {
         #region Delaracao de variaveis
-        private readonly string secretKey = "2c68501c5eb8584a079981e6506effd6";
         private readonly string link = "https://api.darksky.net/forecast";
 
         public readonly double latitude;
@@ -32,10 +32,13 @@ namespace DarkSkyApp
 
         public async void GetDarkSky()
         {
+
+            string secretKey = System.Configuration.ConfigurationManager.AppSettings.GetValues("secretKey")[0].ToString();
+
             HttpClient client = new HttpClient();
             string latitudeString = latitude.ToString().Replace(",", ".");
             string longitudeString = longitude.ToString().Replace(",", ".");
-            string requestUri = $"{link}/{secretKey}/{latitudeString},{longitudeString}";
+            string requestUri = $"{link}/{secretKey}/{latitudeString},{longitudeString}?lang=pt&units=si";
             HttpResponseMessage response = await client.GetAsync(requestUri);
             client.Dispose();
 

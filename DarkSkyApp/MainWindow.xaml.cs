@@ -89,7 +89,11 @@ namespace DarkSkyApp
             textBoxPressure.Text = darkSky.currently.pressure.ToString();
             textBoxSummary.Text = darkSky.currently.summary;
             textBoxTemperature.Text = darkSky.currently.temperature.ToString();
-            textBoxTime.Text = darkSky.currently.time.ToString();
+            // Conversão de UNIX timestamp.
+            DateTime dateTime = new DateTime(1970, 1, 1);
+            dateTime = dateTime.AddSeconds(darkSky.currently.time);
+            textBoxTime.Text = dateTime.ToString();
+            //
             textBoxWindBearing.Text = darkSky.currently.windBearing.ToString();
             textBoxWindGust.Text = darkSky.currently.windGust.ToString();
             textBoxWindSpeed.Text = darkSky.currently.windSpeed.ToString();
