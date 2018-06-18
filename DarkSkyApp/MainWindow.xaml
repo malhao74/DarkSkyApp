@@ -52,7 +52,42 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Daily">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Label Content="Time" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Icon" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Precip. Intensity" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Precip. Probability" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Temeprature High" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Dew Point" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Pressure" HorizontalAlignment="Left" Margin="10,250,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Wind Gust" HorizontalAlignment="Left" Margin="10,290,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="textBoxTimeDaily" HorizontalAlignment="Left" Height="23" Margin="115,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxIconDaily" HorizontalAlignment="Left" Height="23" Margin="115,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxPrecipIntensityDaily" HorizontalAlignment="Left" Height="23" Margin="115,90,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxPrecipProbabilityDaily" HorizontalAlignment="Left" Height="23" Margin="115,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxTemperatureHighDaily" HorizontalAlignment="Left" Height="23" Margin="115,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxDewPointDaily" HorizontalAlignment="Left" Height="23" Margin="115,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxPressureDaily" HorizontalAlignment="Left" Height="23" Margin="115,250,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxWindGustDaily" HorizontalAlignment="Left" Height="23" Margin="115,290,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+                    <Label Content="Summary" HorizontalAlignment="Left" Margin="234,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Temperature Low" HorizontalAlignment="Left" Margin="234,50,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Temperature Low Time" HorizontalAlignment="Left" Margin="234,90,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Temperature High Time" HorizontalAlignment="Left" Margin="234,130,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Temperature Max" HorizontalAlignment="Left" Margin="234,170,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Temperature Max Time" HorizontalAlignment="Left" Margin="234,210,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Wind Speed" HorizontalAlignment="Left" Margin="234,250,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Wind Bearing" HorizontalAlignment="Left" Margin="234,290,0,0" VerticalAlignment="Top"/>
+                    <TextBox Name="textBoxSummaryDaily" HorizontalAlignment="Left" Height="23" Margin="362,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxTemperatureLowDaily" HorizontalAlignment="Left" Height="23" Margin="362,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxTemperatureLowTimeDaily" HorizontalAlignment="Left" Height="23" Margin="362,90,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxTemperatureHighTimeDaily" HorizontalAlignment="Left" Height="23" Margin="362,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxTemperatureMax" HorizontalAlignment="Left" Height="23" Margin="362,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxTemperatureMaxTime" HorizontalAlignment="Left" Height="23" Margin="362,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxWindSpeedDaily" HorizontalAlignment="Left" Height="23" Margin="362,250,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Name="textBoxWindBearingDaily" HorizontalAlignment="Left" Height="23" Margin="362,290,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>

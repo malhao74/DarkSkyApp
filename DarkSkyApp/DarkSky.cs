@@ -201,17 +201,17 @@ namespace DarkSkyApp
         public double moonPhase;
         public double precipIntensity;
         public double precipIntensityMax;
-        public double precipIntensityMaxTime;
+        public int precipIntensityMaxTime;
         public double precipProbability;
         public string precipType;
         public double temperatureHigh;
-        public double temperatureHighTime;
+        public int temperatureHighTime;
         public double temperatureLow;
-        public double temperatureLowTime;
+        public int temperatureLowTime;
         public double apparentTemperatureHigh;
-        public double apparentTemperatureHighTime;
+        public int apparentTemperatureHighTime;
         public double apparentTemperatureLow;
-        public double apparentTemperatureLowTime;
+        public int apparentTemperatureLowTime;
         public double dewPoint;
         public double humidity;
         public double pressure;
@@ -225,23 +225,23 @@ namespace DarkSkyApp
         public double visibility;
         public double ozone;
         public double temperatureMin;
-        public double temperatureMinTime;
+        public int temperatureMinTime;
         public double temperatureMax;
-        public double temperatureMaxTime;
+        public int temperatureMaxTime;
         public double apparentTemperatureHMin;
-        public double apparentTemperatureHMinTime;
+        public int apparentTemperatureHMinTime;
         public double apparentTemperatureHMax;
-        public double apparentTemperatureHMaxTime;
+        public int apparentTemperatureHMaxTime;
 
         public DarkSkyDailyData(int time, string summary, string icon, int sunriseTime, int sunsetTime, double moonPhase, 
-            double precipIntensity, double precipIntensityMax, double precipIntensityMaxTime, double precipProbability, 
-            string precipType, double temperatureHigh, double temperatureHighTime, double temperatureLow, double temperatureLowTime, 
-            double apparentTemperatureHigh, double apparentTemperatureHighTime, double apparentTemperatureLow, 
-            double apparentTemperatureLowTime, double dewPoint, double humidity, double pressure, double windSpeed, double windGust, 
+            double precipIntensity, double precipIntensityMax, int precipIntensityMaxTime, double precipProbability, 
+            string precipType, double temperatureHigh, int temperatureHighTime, double temperatureLow, int temperatureLowTime, 
+            double apparentTemperatureHigh, int apparentTemperatureHighTime, double apparentTemperatureLow,
+            int apparentTemperatureLowTime, double dewPoint, double humidity, double pressure, double windSpeed, double windGust, 
             double windGustTime, double windBearing, double cloudCover, double uvIndex, double uvIndexTime, double visibility, 
-            double ozone, double temperatureMin, double temperatureMinTime, double temperatureMax, double temperatureMaxTime, 
-            double apparentTemperatureHMin, double apparentTemperatureHMinTime, double apparentTemperatureHMax, 
-            double apparentTemperatureHMaxTime)
+            double ozone, double temperatureMin, int temperatureMinTime, double temperatureMax, int temperatureMaxTime, 
+            double apparentTemperatureHMin, int apparentTemperatureHMinTime, double apparentTemperatureHMax,
+            int apparentTemperatureHMaxTime)
         {
             this.time = time;
             this.summary = summary;
