@@ -5,5 +5,8 @@
     </startup>
     <appSettings>
         <add key="secretKey" value="Get your DarkSky key at https://darksky.net/dev and put it here!"/>
+        <add key="DefaultLatitude" value="42,3601"/>
+        <add key="DefaultLongitude" value="-71,0589"/>
+        <add key="ipinfoKey" value="Get your ipInfo key at https://ipinfo.io/developers and put it here!" />
     </appSettings>
 </configuration>
