@@ -9,7 +9,17 @@
     <Grid>
         <Label Name="labelLatitude" Content="Latitude" HorizontalAlignment="Left" Margin="20,41,0,0" VerticalAlignment="Top"/>
         <Label Name="lableLongitude" Content="Longitude" HorizontalAlignment="Left" Margin="20,81,0,0" VerticalAlignment="Top"/>
-        <Button Name="buttonProcurar" Content="Procurar" HorizontalAlignment="Left" Margin="150,169,0,0" VerticalAlignment="Top" Width="75" Click="ButtonProcurar_Click"/>
+        <Label Name="lableLocation" Content="Location" HorizontalAlignment="Left" Margin="20,121,0,0" VerticalAlignment="Top"/>
+        <Button Name="buttonSearch" HorizontalAlignment="Left" Margin="106,169,0,0" VerticalAlignment="Top" Width="119" Click="ButtonSearchWeather_Click" Height="41" >
+            <TextBlock TextWrapping="Wrap" TextAlignment="Center">
+                Search weather conditions
+            </TextBlock>
+        </Button>
+        <Button Name="buttonSearchLocation" HorizontalAlignment="Left" Margin="106,230,0,0" VerticalAlignment="Top" Width="119" Click="ButtonSearchLocation_Click" Height="41" >
+            <TextBlock TextWrapping="Wrap" TextAlignment="Center">
+                Search current location
+            </TextBlock>
+        </Button>        
         <TextBox Name="textBoxLatitude" HorizontalAlignment="Left" Height="23" Margin="106,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="textBoxLongitude" HorizontalAlignment="Left" Height="23" Margin="106,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="textBoxTimezone" HorizontalAlignment="Left" Height="23" Margin="106,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>

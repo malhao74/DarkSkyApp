@@ -12,7 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Globalization;
+using System.Configuration;
+using Models;
+using DataLayer;
 
+[assembly: CLSCompliant(true)]
 namespace DarkSkyApp
 {
     /// <summary>
@@ -20,41 +25,71 @@ namespace DarkSkyApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        private DataLayerDarkSky dataLayerDarkSky;
+        private DataLayerLocation dataLayerLocation;
+
         public MainWindow()
         {
             InitializeComponent();
-        }
 
-        private void ButtonProcurar_Click(object sender, RoutedEventArgs e)
-        {
-            double latitude = Convert.ToDouble(textBoxLatitude.Text);
-            double longitude = Convert.ToDouble(textBoxLongitude.Text);
+            dataLayerLocation = new DataLayerLocation();
+            dataLayerLocation.GotDataEventHandler += DataLayerLocation_GotData;
 
-            DataLayer dataLayer = new DataLayer(latitude, longitude);
-            dataLayer.DataLayer_GotData += DataLayer_GotData;
-            dataLayer.GetDarkSky();
+            dataLayerDarkSky = new DataLayerDarkSky();
+            dataLayerDarkSky.GotDataEventHandler += DataLayerDarkSky_GotData;
         }
 
         private void WindowMain_Loaded(object sender, RoutedEventArgs e)
         {
-            // Para testes.
-            textBoxLatitude.Text = "42,3601";
-            textBoxLongitude.Text = "-71,0589";
+            // Default values from config 
+            string defaultLatitude = ConfigurationManager.AppSettings.GetValues("DefaultLatitude")[0].ToString();
+            string defaultLongitude = ConfigurationManager.AppSettings.GetValues("DefaultLongitude")[0].ToString();
+            textBoxLatitude.Text = defaultLatitude;
+            textBoxLongitude.Text = defaultLongitude;
         }
 
-        private void DataLayer_GotData(bool correuBem, DarkSky darkSky)
+        private void ButtonSearchWeather_Click(object sender, RoutedEventArgs e)
         {
-            LimpaEcran();
+            double latitude = textBoxLatitude.Text.ToDoubleCultureFormatted();
+            double longitude = textBoxLongitude.Text.ToDoubleCultureFormatted();
 
-            if (correuBem == false)
+            dataLayerDarkSky.SetLocation(latitude, longitude);
+            dataLayerDarkSky.GetDataAsync();
+        }
+
+        private void ButtonSearchLocation_Click(object sender, RoutedEventArgs e)
+        {
+            dataLayerLocation.GetDataAsync();
+        }
+
+        private void DataLayerDarkSky_GotData(object sender, DataLayerEventArgs<DarkSky> e)
+        {
+            ClearValues();
+
+            DarkSky darkSky = e.Item;
+
+            if ( darkSky == null)
             {
                 return;
             }
 
-            ActualizaEcran(darkSky);
+            UpdateValues(darkSky);
         }
 
-        private void LimpaEcran()
+        private void DataLayerLocation_GotData(object sender, DataLayerEventArgs<IPInfo> e)
+        {
+            IPInfo iPInfo = e.Item;
+
+            if (iPInfo == null)
+            {
+                return;
+            }
+
+            textBoxLatitude.Text = iPInfo.Latitude.ToStringCultureFormatted();
+            textBoxLongitude.Text = iPInfo.Longitude.ToStringCultureFormatted();
+        }
+
+        private void ClearValues()
         {
             // Tab Currently
             textBoxApparentTemperature.Text = "";
@@ -94,51 +129,44 @@ namespace DarkSkyApp
             textBoxWindBearingDaily.Text = "";
         }
 
-        private void ActualizaEcran(DarkSky darkSky)
+        private void UpdateValues(DarkSky darkSky)
         {
             // Tab Currently
-            textBoxApparentTemperature.Text = darkSky.currently.apparentTemperature.ToString();
-            textBoxDewPoint.Text = darkSky.currently.dewPoint.ToString();
-            textBoxHumidity.Text = darkSky.currently.humidity.ToString();
-            textBoxIcon.Text = darkSky.currently.icon;
-            textBoxNearestStormDistance.Text = darkSky.currently.nearestStormDistance.ToString();
-            textBoxPrecipIntensity.Text = darkSky.currently.precipIntensity.ToString();
-            textBoxPrecipIntensityError.Text = darkSky.currently.precipIntensityError.ToString();
-            textBoxPrecipProbability.Text = darkSky.currently.precipProbability.ToString();
-            textBoxPrecipType.Text = darkSky.currently.precipType;
-            textBoxPressure.Text = darkSky.currently.pressure.ToString();
-            textBoxSummary.Text = darkSky.currently.summary;
-            textBoxTemperature.Text = darkSky.currently.temperature.ToString();
-            textBoxTime.Text = ConvertUnixTimeStamp(darkSky.currently.time).ToString();
-            textBoxWindBearing.Text = darkSky.currently.windBearing.ToString();
-            textBoxWindGust.Text = darkSky.currently.windGust.ToString();
-            textBoxWindSpeed.Text = darkSky.currently.windSpeed.ToString();
-            textBoxTimezone.Text = darkSky.timezone;
+            textBoxApparentTemperature.Text = darkSky.Currently.ApparentTemperature.ToStringCultureFormatted();
+            textBoxDewPoint.Text = darkSky.Currently.DewPoint.ToStringCultureFormatted();
+            textBoxHumidity.Text = darkSky.Currently.Humidity.ToStringCultureFormatted();
+            textBoxIcon.Text = darkSky.Currently.Icon;
+            textBoxNearestStormDistance.Text = darkSky.Currently.NearestStormDistance.ToStringCultureFormatted();
+            textBoxPrecipIntensity.Text = darkSky.Currently.PrecipIntensity.ToStringCultureFormatted();
+            textBoxPrecipIntensityError.Text = darkSky.Currently.PrecipIntensityError.ToStringCultureFormatted();
+            textBoxPrecipProbability.Text = darkSky.Currently.PrecipProbability.ToStringCultureFormatted();
+            textBoxPrecipType.Text = darkSky.Currently.PrecipType;
+            textBoxPressure.Text = darkSky.Currently.Pressure.ToStringCultureFormatted();
+            textBoxSummary.Text = darkSky.Currently.Summary;
+            textBoxTemperature.Text = darkSky.Currently.Temperature.ToStringCultureFormatted();
+            textBoxTime.Text = darkSky.Currently.Time.ToDateTime().ToStringCultureFormatted();
+            textBoxWindBearing.Text = darkSky.Currently.WindBearing.ToStringCultureFormatted();
+            textBoxWindGust.Text = darkSky.Currently.WindGust.ToStringCultureFormatted();
+            textBoxWindSpeed.Text = darkSky.Currently.WindSpeed.ToStringCultureFormatted();
+            textBoxTimezone.Text = darkSky.Timezone;
 
             // Tab Daily
-            textBoxTimeDaily.Text = ConvertUnixTimeStamp(darkSky.daily.data[0].time).ToString();
-            textBoxIconDaily.Text = darkSky.daily.icon;
-            textBoxPrecipIntensityDaily.Text = darkSky.daily.data[0].precipIntensity.ToString();
-            textBoxPrecipProbabilityDaily.Text = darkSky.daily.data[0].precipProbability.ToString();
-            textBoxTemperatureHighDaily.Text = darkSky.daily.data[0].temperatureHigh.ToString();
-            textBoxDewPointDaily.Text = darkSky.daily.data[0].dewPoint.ToString();
-            textBoxPressureDaily.Text = darkSky.daily.data[0].pressure.ToString();
-            textBoxWindGustDaily.Text = darkSky.daily.data[0].windGust.ToString();
-            textBoxSummaryDaily.Text = darkSky.daily.summary;
-            textBoxTemperatureLowDaily.Text = darkSky.daily.data[0].temperatureLow.ToString();
-            textBoxTemperatureLowTimeDaily.Text = ConvertUnixTimeStamp(darkSky.daily.data[0].temperatureLowTime).ToString();
-            textBoxTemperatureHighTimeDaily.Text = ConvertUnixTimeStamp(darkSky.daily.data[0].temperatureHighTime).ToString();
-            textBoxTemperatureMax.Text = darkSky.daily.data[0].temperatureMax.ToString();
-            textBoxTemperatureMaxTime.Text = ConvertUnixTimeStamp(darkSky.daily.data[0].temperatureMaxTime).ToString();
-            textBoxWindSpeedDaily.Text = darkSky.daily.data[0].windSpeed.ToString();
-            textBoxWindBearingDaily.Text = darkSky.daily.data[0].windBearing.ToString();
-        }
-        // Conversão de UNIX timestamp.
-        private DateTime ConvertUnixTimeStamp(int unixTimeStamp)
-        {
-            DateTime dateTime = new DateTime(1970, 1, 1);
-            dateTime = dateTime.AddSeconds(unixTimeStamp);
-            return dateTime;
+            textBoxTimeDaily.Text = darkSky.Daily.Data[0].Time.ToDateTime().ToStringCultureFormatted();
+            textBoxIconDaily.Text = darkSky.Daily.Icon;
+            textBoxPrecipIntensityDaily.Text = darkSky.Daily.Data[0].PrecipIntensity.ToStringCultureFormatted();
+            textBoxPrecipProbabilityDaily.Text = darkSky.Daily.Data[0].PrecipProbability.ToStringCultureFormatted();
+            textBoxTemperatureHighDaily.Text = darkSky.Daily.Data[0].TemperatureHigh.ToStringCultureFormatted();
+            textBoxDewPointDaily.Text = darkSky.Daily.Data[0].DewPoint.ToStringCultureFormatted();
+            textBoxPressureDaily.Text = darkSky.Daily.Data[0].Pressure.ToStringCultureFormatted();
+            textBoxWindGustDaily.Text = darkSky.Daily.Data[0].WindGust.ToStringCultureFormatted();
+            textBoxSummaryDaily.Text = darkSky.Daily.Summary;
+            textBoxTemperatureLowDaily.Text = darkSky.Daily.Data[0].TemperatureLow.ToStringCultureFormatted();
+            textBoxTemperatureLowTimeDaily.Text = darkSky.Daily.Data[0].TemperatureLowTime.ToDateTime().ToStringCultureFormatted();
+            textBoxTemperatureHighTimeDaily.Text = darkSky.Daily.Data[0].TemperatureHighTime.ToDateTime().ToStringCultureFormatted();
+            textBoxTemperatureMax.Text = darkSky.Daily.Data[0].TemperatureMax.ToStringCultureFormatted();
+            textBoxTemperatureMaxTime.Text = darkSky.Daily.Data[0].TemperatureMaxTime.ToDateTime().ToStringCultureFormatted();
+            textBoxWindSpeedDaily.Text = darkSky.Daily.Data[0].WindSpeed.ToStringCultureFormatted();
+            textBoxWindBearingDaily.Text = darkSky.Daily.Data[0].WindBearing.ToStringCultureFormatted();
         }
     }
 }
