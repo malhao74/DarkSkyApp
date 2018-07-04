@@ -9,7 +9,9 @@ using System.Configuration;
 using Models;
 
 namespace DataLayer
-{
+    {/// <summary>
+    /// Class to fetch weather information from Dark sky API
+    /// </summary>
     internal class DataLayerDarkSky : IDataLayerInterface<DarkSky>
     {
         #region Fields & properties

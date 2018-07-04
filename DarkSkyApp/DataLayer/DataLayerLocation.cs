@@ -10,6 +10,9 @@ using Models;
 
 namespace DataLayer
 {
+    /// <summary>
+    /// Fetch location information from IP info API
+    /// </summary>
     class DataLayerLocation : IDataLayerInterface<IPInfo>
     {
         public event EventHandler<DataLayerEventArgs<IPInfo>> GotDataEventHandler;

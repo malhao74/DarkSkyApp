@@ -39,6 +39,7 @@ namespace DarkSkyApp
             dataLayerDarkSky.GotDataEventHandler += DataLayerDarkSky_GotData;
         }
 
+        #region Events
         private void WindowMain_Loaded(object sender, RoutedEventArgs e)
         {
             // Default values from config 
@@ -53,12 +54,16 @@ namespace DarkSkyApp
             double latitude = textBoxLatitude.Text.ToDoubleCultureFormatted();
             double longitude = textBoxLongitude.Text.ToDoubleCultureFormatted();
 
+            Cursor = Cursors.Wait; 
+
             dataLayerDarkSky.SetLocation(latitude, longitude);
             dataLayerDarkSky.GetDataAsync();
         }
 
         private void ButtonSearchLocation_Click(object sender, RoutedEventArgs e)
         {
+            Cursor = Cursors.Wait;
+
             dataLayerLocation.GetDataAsync();
         }
 
@@ -67,6 +72,8 @@ namespace DarkSkyApp
             ClearValues();
 
             DarkSky darkSky = e.Item;
+
+            Cursor = Cursors.Arrow;
 
             if ( darkSky == null)
             {
@@ -80,6 +87,8 @@ namespace DarkSkyApp
         {
             IPInfo iPInfo = e.Item;
 
+            Cursor = Cursors.Arrow;
+
             if (iPInfo == null)
             {
                 return;
@@ -88,7 +97,11 @@ namespace DarkSkyApp
             textBoxLatitude.Text = iPInfo.Latitude.ToStringCultureFormatted();
             textBoxLongitude.Text = iPInfo.Longitude.ToStringCultureFormatted();
         }
+        #endregion
 
+        /// <summary>
+        /// Clear weather information from the window
+        /// </summary>
         private void ClearValues()
         {
             // Tab Currently
@@ -129,6 +142,10 @@ namespace DarkSkyApp
             textBoxWindBearingDaily.Text = "";
         }
 
+        /// <summary>
+        /// Updates weather information on the window
+        /// </summary>
+        /// <param name="darkSky"></param>
         private void UpdateValues(DarkSky darkSky)
         {
             // Tab Currently

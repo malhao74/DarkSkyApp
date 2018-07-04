@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Models
 {
     /// <summary>
-    /// Classes to map the json information from the DarkSky API
+    /// Class to map the json information from the DarkSky API
     /// </summary>
     class DarkSky
     {
@@ -37,6 +37,9 @@ namespace Models
         }
     }
 
+    /// <summary>
+    /// Class to map the json information from the DarkSky API
+    /// </summary>
     class DarkSkyCurrently
     {
         public int Time { get; }
@@ -88,6 +91,9 @@ namespace Models
         }
     }
 
+    /// <summary>
+    /// Class to map the json information from the DarkSky API
+    /// </summary>
     class DarkSkyMinutely
     {
         public string Summary { get; }
@@ -102,6 +108,9 @@ namespace Models
         }
     }
 
+    /// <summary>
+    /// Class to map the json information from the DarkSky API
+    /// </summary>
     class DarkSkyMinutelyData
     {
         public int Time { get; }
@@ -121,6 +130,9 @@ namespace Models
         }
     }
 
+    /// <summary>
+    /// Class to map the json information from the DarkSky API
+    /// </summary>
     class DarkSkyHourly
     {
         public string Summary { get; }
@@ -135,6 +147,9 @@ namespace Models
         }
     }
 
+    /// <summary>
+    /// Class to map the json information from the DarkSky API
+    /// </summary>
     class DarkSkyHourlyData
     {
         public int Time { get; }
@@ -181,6 +196,9 @@ namespace Models
         }
     }
 
+    /// <summary>
+    /// Class to map the json information from the DarkSky API
+    /// </summary>
     class DarkSkyDaily
     {
         public string Summary { get; }
@@ -195,6 +213,9 @@ namespace Models
         }
     }
 
+    /// <summary>
+    /// Class to map the json information from the DarkSky API
+    /// </summary>
     class DarkSkyDailyData
     {
         public int Time { get; }
@@ -289,6 +310,9 @@ namespace Models
         }
     }
 
+    /// <summary>
+    /// Class to map the json information from the DarkSky API
+    /// </summary>
     class Alerts
     {
         public string Title { get; }
@@ -307,6 +331,9 @@ namespace Models
         }
     }
 
+    /// <summary>
+    /// Class to map the json information from the DarkSky API
+    /// </summary>
     class Flags
     {
         public string Units { get; }

@@ -24,7 +24,7 @@ namespace DataLayer
     }
 
     /// <summary>
-    /// Interafce to implement a baasic data layer
+    /// Interafce to implement a basic data layer
     /// </summary>
     /// <typeparam name="TData"></typeparam>
     internal interface IDataLayerInterface<TData>

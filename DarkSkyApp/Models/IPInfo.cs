@@ -7,7 +7,7 @@ using System.Globalization;
 namespace Models
 {
     /// <summary>
-    /// Class to read the information from IpInfo API.
+    /// Class to map the information from IpInfo API
     /// </summary>
     internal class IPInfo
     {
